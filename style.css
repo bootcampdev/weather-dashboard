@@ -1,0 +1,39 @@
+.navbar-custom {
+    justify-content: center;
+    background-color: #4e77a7;
+  }
+
+  aside {
+    width: 25%;
+    padding-left: 15px;    
+    padding-right: 10px;
+    float: left;
+    background-color: rgb(238, 238, 238);
+  }  
+
+  .main-section {
+      padding-left: 20px;
+      width: 70%;
+      margin-top: 10px;
+      margin-right: 1px;
+  }
+
+  .city-list {
+    list-style-type: none;
+  }  
+
+  li {
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #4e77a7;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.0;
+  } 
+
+  .main-card-title-custom {
+    font-size: xx-large;
+  }
