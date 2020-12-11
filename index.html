@@ -25,67 +25,125 @@
 
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-3">
+                <!-- side search panel -->
+                <aside>
 
-            <!-- side search panel -->
-            <aside>
-                <p>im asside</p>
+                    <form action="">
 
-                <form action="">
+                        <div class="input-group mb-3" style="margin-top: 10px;">
+                            <input type="text" class="form-control" placeholder="City" aria-label="City"
+                                aria-describedby="basic-addon2">
 
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="City" aria-label="City"
-                            aria-describedby="basic-addon2">
+                            <div class="input-group-append">
 
-                        <div class="input-group-append">
-
-                            <button class="btn btn-outline-secondary" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-
+                                <button class="btn btn-outline-secondary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
                         </div>
 
-                    </div>
+                        <ul class="list-group city-list">
+                            <li>Chicago</li>
+                            <li>Michigan</li>
+                            <li>Wisconsin</li>
+                            <li>New York</li>
+                            <li>Denver</li>
+                            <li>Atlanta</li>
+                        </ul>
 
-                    <ul class="list-group city-list">
-                        <li>Chicago</li>
-                        <li>Michigan</li>
-                        <li>Wisconsin</li>
-                    </ul>
-
-                </form>
-            </aside>
+                    </form>
+                </aside>
+            </div>
 
             <!-- main middle-center panel -->
-            <section class="main-section">
+            <div class="col-md-9">
+                <section class="main-section">
+                    <div class="card bg-light text-dark">
+                        <div class="card-body">
+                            <h5 class="card-title main-card-title-custom">Arlington Heights</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Good morning!</h6>
+                            <div class="card-text">temperature</div>
+                            <div class="card-text">humidity</div>
+                            <div class="card-text">wind</div>
+                            <div class="card-text">UV</div>
 
-                <div class="card bg-light text-dark">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </section>
 
-                    <div class="card-body">
-                        <h5 class="card-title main-card-title-custom">Arlington Heights</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Good morning!</h6>
-                        <div class="card-text">temperature</div>
-                        <div class="card-text">humidity</div>
-                        <div class="card-text">wind</div>
-                        <div class="card-text">UV</div>
 
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-
+                <section>                    
+                    <div class="card bg-light text-dark day-card">
+                        <div class="card-body">
+                            <h5 class="card-title main-card-title-custom">12/10/2020</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Rain!</h6>
+                            <div class="card-text">temperature</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-light text-dark day-card">
+                        <div class="card-body">
+                            <h5 class="card-title main-card-title-custom">Tuesday</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Cold!</h6>
+                            <div class="card-text">temperature</div>
+                        </div>
                     </div>
 
-                </div>
-            </section>
+                    <div class="card bg-light text-dark day-card">
+                        <div class="card-body">
+                            <h5 class="card-title main-card-title-custom">Wed</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Cold!</h6>
+                            <div class="card-text">temperature</div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-light text-dark day-card">
+                        <div class="card-body">
+                            <h5 class="card-title main-card-title-custom">thur</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Cold!</h6>
+                            <div class="card-text">temperature</div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-light text-dark day-card">
+                        <div class="card-body">
+                            <h5 class="card-title main-card-title-custom">5</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Cold!</h6>
+                            <div class="card-text">temperature</div>
+                        </div>
+                    </div>
 
 
+                    <!-- <div class="container mt-3">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="day-box">Box 1</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="day-box">Box 2</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="day-box">Box 3</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="day-box">Box 4</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="day-box">Box 5</p>
+                            </div>
+                        </div>
+                    </div> -->
 
+                </section>
+            </div> <!-- main middle-center panel -->
 
-
-
-
-        </div>
-
+        </div>  <!-- end one big row -->
 
     </div>
 

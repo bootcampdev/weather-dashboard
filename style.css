@@ -4,16 +4,16 @@
   }
 
   aside {
-    width: 25%;
+    width: 100%;
     padding-left: 15px;    
     padding-right: 10px;
+    margin-top: 10px;
     float: left;
     background-color: rgb(238, 238, 238);
   }  
 
-  .main-section {
-      padding-left: 20px;
-      width: 70%;
+  .main-section {      
+      width: 100%;
       margin-top: 10px;
       margin-right: 1px;
   }
@@ -35,5 +35,12 @@
   } 
 
   .main-card-title-custom {
-    font-size: xx-large;
+    font-size: larger;
   }
+
+  .day-card {
+    width: 19%;
+    margin-top: 10px;
+    margin-right: 5px;
+    float: left;
+}
