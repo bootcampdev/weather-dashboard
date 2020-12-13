@@ -46,6 +46,10 @@
     float: left;
   }
 
+  #uv-index {
+    width: 125px;
+  }
+
   .day-card {
     width: 15%;
     margin-top: 10px;
