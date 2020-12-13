@@ -16,6 +16,7 @@
       width: 97%;
       margin-top: 10px;
       margin-right: 1px;
+      margin-bottom: 20px;
   }
 
   .city-list {
@@ -27,7 +28,7 @@
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 5px;
-    background-color: whitesmoke;
+    background-color: white;
     text-align: center;
     color: #37384E;
     font-size: 1.5em;
@@ -53,6 +54,7 @@
 
 img {
   width: 30px;
+  margin-bottom: 10px;
 }
 
 .footer {
