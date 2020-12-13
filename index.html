@@ -65,17 +65,18 @@
                     <div class="card bg-light text-dark">
                         <div class="card-body">
                             <h3 class="card-title main-card-title-custom">Arlington Heights</h3>
-                            <h6 class="card-subtitle mb-2 text-muted">Good morning!</h6>
-                            <div class="card-text">temperature</div>
-                            <div class="card-text">humidity</div>
-                            <div class="card-text">wind</div>
-                            <div class="card-text">UV</div>
+                            <img src="./Assets/sun.png" alt="Sunny">
+                            
+                            <div id="temp" class="card-text">temperature</div>
+                            <div id="humidity" class="card-text">humidity</div>
+                            <div id="wind" class="card-text">wind</div>
+                            <div id="uv-index" class="card-text">UV</div>
 
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of
                                 the card's content.</p>
                             <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                            <a href="#" class="card-link">Another link</a> -->
                         </div>
                     </div>
                 </section>
@@ -85,7 +86,7 @@
                 <section>                    
                     <div class="card  text-dark day-card" >
                         <div class="card-body">
-                            <h5 class="card-title day-card-text">12/10/2020</h5>
+                            <h5 id="card-day-1" class="card-title day-card-text">12/10/2020</h5>
                             <img src="./Assets/sun.png" alt="Sunny">
                             <div class="card-text day-card-text">Temp:</div>
                             <div class="card-text day-card-text">Humidity:</div>
@@ -94,7 +95,7 @@
                     
                     <div class="card  text-dark day-card" >
                         <div class="card-body">
-                            <h5 class="card-title day-card-text">12/10/2020</h5>
+                            <h5 id="card-day-2" class="card-title day-card-text">12/10/2020</h5>
                             <img src="./Assets/wind.png" alt="Sunny">
                             <div class="card-text day-card-text">Temp:</div>
                             <div class="card-text day-card-text">Humidity:</div>
@@ -103,7 +104,7 @@
 
                     <div class="card  text-dark day-card" >
                         <div class="card-body">
-                            <h5 class="card-title day-card-text">12/10/2020</h5>
+                            <h5 id="card-day-3" class="card-title day-card-text">12/10/2020</h5>
                             <img src="./Assets/snowflake.png" alt="Sunny">
                             <div class="card-text day-card-text">Temp:</div>
                             <div class="card-text day-card-text">Humidity:</div>
@@ -112,7 +113,7 @@
 
                     <div class="card  text-dark day-card" >
                         <div class="card-body">
-                            <h5 class="card-title day-card-text">12/10/2020</h5>
+                            <h5 id="card-day-4" class="card-title day-card-text">12/10/2020</h5>
                             <img src="./Assets/storm.png" alt="Sunny">
                             <div class="card-text day-card-text">Temp:</div>
                             <div class="card-text day-card-text">Humidity:</div>
@@ -121,7 +122,7 @@
 
                     <div class="card  text-dark day-card" >
                         <div class="card-body">
-                            <h5 class="card-title day-card-text">12/10/2020</h5>
+                            <h5 id="card-day-5" class="card-title day-card-text">12/10/2020</h5>
                             <img src="./Assets/cloudy.png" alt="Sunny">
                             <div class="card-text day-card-text">Temp:</div>
                             <div class="card-text day-card-text">Humidity:</div>
@@ -142,7 +143,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    
+
     <script src="./script.js"></script>
 </body>
 
