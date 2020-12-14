@@ -28,24 +28,32 @@ $(document).ready(function () {
     //     get_forecast_weather(city);
     // })
 
-    document.querySelectorAll('li').forEach(li => {
-        li.addEventListener('click', () => {
-            var city = $(this).text();
-            console.log("item click " + $(this).text())
-    
-            get_forecast_weather(city);
-        });
-      });
+    // document.querySelectorAll('li').forEach(li => {
+    //     li.addEventListener('click', () => {
+    //         var city = $(this).text();
+    //         console.log("item click " + $(this).text())
+
+    //         get_forecast_weather(city);
+    //     });
+    // });
 
 
     // when there is a click on search button
+    // get the weather and add the city to the list
     $(".btn").on("click", function (e) {
 
         var inputstr = $("#input-city").val();
         var cityval = inputstr.charAt(0).toUpperCase() + inputstr.slice(1);
         $("#input-city").val(cityval);
+
+        // add click event listener to this new li
+        $('.city-list').prepend("<li>" + cityval + "</li>").on("click", "li", function () {
+            var city = $(this).text();
+            get_forecast_weather(city);
+        });
         
         get_forecast_weather(cityval);
+        localStorage.setItem("myWeatherLastCity", cityval);
     })
 
     // functions 
@@ -102,23 +110,22 @@ $(document).ready(function () {
                     $("#card-humid" + i).text("Humidity: " + weatherData.list[i].main.humidity + " %");
 
                     set_weather_icon(weatherData.list[i].weather[0].main, "#card-icon" + i)
-                }               
+                }
 
                 // finally save city searched and add to city list
                 //var li = $("li");
                 //li.text(weatherData.city.name);
                 //$(".city-list").prepend(li);
                 // var li = document.createElement('li');
-  
+
                 // li.innerHTML = weatherData.city.name;
                 // li.addEventListener('click', testTheEventListener);
                 // lst.appendChild(li);
 
-                $('.city-list').append("<li>" + weatherData.city.name + "</li>").on("click","li",function(){
-                    get_forecast_weather(weatherData.city.name);
-                  });
-                 
-                localStorage.setItem("myWeatherLastCity", weatherData.city.name);
+                // $('.city-list').append("<li>" + weatherData.city.name + "</li>").on("click","li",function(){
+                //     get_forecast_weather(weatherData.city.name);
+                //   });
+
             },
             error: function () {
                 alert("ERROR: No such city.  Please try again.");
@@ -169,9 +176,9 @@ $(document).ready(function () {
             // //$(".city-list").append(li);            
             // $(".city-list").append("<li>" + myWeatherLastCity + "</li>");
 
-            $('.city-list').append("<li>" + myWeatherLastCity + "</li>").on("click","li",function(){
+            $('.city-list').append("<li>" + myWeatherLastCity + "</li>").on("click", "li", function () {
                 get_forecast_weather(myWeatherLastCity);
-              });
+            });
         }
         else {
             // initialize
