@@ -81,8 +81,19 @@ $(document).ready(function () {
                     method: "GET"
                 }).then(function (uvData) {
 
+                    var uvVal = parseFloat(uvData.value);
                     $("#uv-index").text("UV Index: " + uvData.value);
-                    $("#uv-index").css("background-color", "red");
+
+                    if (uvVal > 11)
+                        $("#uv-index").css("background-color", "purple");
+                    else if (uvVal > 8)
+                        $("#uv-index").css("background-color", "red");
+                    else if (uvVal > 6)
+                        $("#uv-index").css("background-color", "orange");
+                    else if (uvVal > 3)
+                        $("#uv-index").css("background-color", "yellow");
+                    else if (uvVal > 0)
+                        $("#uv-index").css("background-color", "green");
                 })
 
                 //uv_index = get_uv_index(lat, lon);
