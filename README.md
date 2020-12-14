@@ -1,5 +1,5 @@
 # 06 Server-Side APIs: Weather Dashboard
-# weather-dashboard
+### weather-dashboard
 
 Demonstartion of third-pary APIs to allow developers to access their data.  This applicaion will use the  [OpenWeather API](https://openweathermap.org/api) to fetch the current and forecasted weather for the city selected.  
 
@@ -9,39 +9,25 @@ The weather-dashboard utilize the `localStorage` to retrieve the last city searc
 ## User Story
 
 ```
-As a user this dashboard will show the weather and their forecast for multiple cities
+As a user this dashboard will show the weather and their forecast for multiple cities and store in a list.  The list is clickable or the user can can type in the city name and click the search button.  The city name is checked to verify it is valid.
 
 ```
 
-## Acceptance Criteria
+![weather dashboard interface](./Assets/weather-dashboard-example.png)
+
+## Technical Features Include
 
 ```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-WHEN I open the weather dashboard
-THEN I am presented with the last searched city forecast
+- API jQuery Ajax call, checking for success and failure
+- Utilize local storage for the last city search and display this city the next time the application is run
+- Dynamic clickable list building including adding the event listener
+- Uitilize icons from Flat Icon and specail math symbols from javascripter.com
+- Include bootstrap cards
+- Color coded UV index presentation based on value
 ```
 
-The following image demonstrates the application functionality:
+Application direct link hosted by Github:
 
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
+[weather-dashboard](https://bootcampdev.github.io/weather-dashboard/)
 
-## Review
 
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.

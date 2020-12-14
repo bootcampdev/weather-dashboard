@@ -84,6 +84,7 @@ $(document).ready(function () {
                     var uvVal = parseFloat(uvData.value);
                     $("#uv-index").text("UV Index: " + uvData.value);
 
+                    // set uv index color by uv rating
                     if (uvVal > 11)
                         $("#uv-index").css("background-color", "purple");
                     else if (uvVal > 8)
