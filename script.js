@@ -1,42 +1,21 @@
 // JavaScript function that wraps everything and runs when DOM is ready
 // Notes:
 // - Special math symbols http://www.javascripter.net/faq/mathsymbols.htm
+// - Weather Icons by https://www.flaticon.com/authors/those-icons
+
 $(document).ready(function () {
 
     // saved api key for openweathermap.org
 
     var apikey = "d57aa70b0f8e0b9c1c6f9e59e8773471";
-    var weather_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + apikey + "&units=imperial";
-
     var forecast_url = "https://api.openweathermap.org/data/2.5/forecast/?appid=" + apikey + "&units=imperial";
-
     var weather_uv_url = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apikey
 
     var today = new Date();
-    var currentDate = today.toDateString();
     var localDate = today.toLocaleDateString();
-
 
     //events
     //
-
-    // when there is a click on the city list
-    // $("li").on("click", function (e) {
-    //     var city = $(this).text();
-    //     console.log("item click " + $(this).text())
-
-    //     get_forecast_weather(city);
-    // })
-
-    // document.querySelectorAll('li').forEach(li => {
-    //     li.addEventListener('click', () => {
-    //         var city = $(this).text();
-    //         console.log("item click " + $(this).text())
-
-    //         get_forecast_weather(city);
-    //     });
-    // });
-
 
     // when there is a click on search button
     // get the weather and add the city to the list
@@ -51,10 +30,21 @@ $(document).ready(function () {
             var city = $(this).text();
             get_forecast_weather(city);
         });
-        
+
         get_forecast_weather(cityval);
         localStorage.setItem("myWeatherLastCity", cityval);
     })
+
+    // $("#input-city").keypress(function (e) {
+    //     var key = e.which;
+    //     if (key == 13)  // the enter key code
+    //     {
+    //         //$('input[name = butAssignProd]').click();
+    //         console.log("return");
+    //         $(".btn").click();
+    //         //return false;
+    //     }
+    // })
 
     // functions 
     //
@@ -69,7 +59,7 @@ $(document).ready(function () {
             url: forecast_url + "&q=" + city,
             method: "GET",
             success: function (weatherData) {
-                console.log(weatherData);
+                //console.log(weatherData);
                 $(".main-card-title-custom").text(weatherData.city.name + " (" + localDate + ")");
 
                 // the main is a one word description of the weather
@@ -79,9 +69,7 @@ $(document).ready(function () {
                 set_weather_icon(main, "#main-icon");
 
                 $("#temp").text("Temperature: " + weatherData.list[0].main.temp + " F\xB0;");
-                //console.log(weatherData.list[0].main.humidity);
                 $("#humidity").text("Humidity: " + weatherData.list[0].main.humidity + " %");
-                //console.log(weatherData.list[0].wind.speed);
                 $("#wind").text("Wind Speed: " + weatherData.list[0].wind.speed + " MPH");
 
                 lat = weatherData.city.coord.lat;
@@ -92,7 +80,6 @@ $(document).ready(function () {
                     url: weather_uv_url + "&lat=" + lat + "&lon=" + lon,
                     method: "GET"
                 }).then(function (uvData) {
-                    console.log(uvData);
 
                     $("#uv-index").text("UV Index: " + uvData.value);
                     $("#uv-index").css("background-color", "red");
@@ -111,21 +98,6 @@ $(document).ready(function () {
 
                     set_weather_icon(weatherData.list[i].weather[0].main, "#card-icon" + i)
                 }
-
-                // finally save city searched and add to city list
-                //var li = $("li");
-                //li.text(weatherData.city.name);
-                //$(".city-list").prepend(li);
-                // var li = document.createElement('li');
-
-                // li.innerHTML = weatherData.city.name;
-                // li.addEventListener('click', testTheEventListener);
-                // lst.appendChild(li);
-
-                // $('.city-list').append("<li>" + weatherData.city.name + "</li>").on("click","li",function(){
-                //     get_forecast_weather(weatherData.city.name);
-                //   });
-
             },
             error: function () {
                 alert("ERROR: No such city.  Please try again.");
@@ -163,7 +135,7 @@ $(document).ready(function () {
 
     function init_5_day_forecast_cards() {
 
-        // main card titles        
+        // main card title      
         $(".main-card-title-custom").text("Enter or select a city! (" + localDate + ")");
 
         // check local storage for the last city weather check
@@ -171,22 +143,17 @@ $(document).ready(function () {
             //add to the display recent city searched
             var myWeatherLastCity = localStorage.getItem("myWeatherLastCity");
 
-            // var li = $("li");
-            // li.text(myWeatherLastCity);
-            // //$(".city-list").append(li);            
-            // $(".city-list").append("<li>" + myWeatherLastCity + "</li>");
-
-            $('.city-list').append("<li>" + myWeatherLastCity + "</li>").on("click", "li", function () {
+            $(".city-list").append("<li>" + myWeatherLastCity + "</li>").on("click", "li", function () {
                 get_forecast_weather(myWeatherLastCity);
             });
         }
         else {
-            // initialize
+            // initialize storage variable
             localStorage.setItem("myWeatherLastCity", "");
         }
 
-
-        // add a day to today for the next 5 days
+        // add a day to today for the next 5 days to display forecast
+        // (probably should of done this as a loop)
         var nextDay = new Date();
         nextDay.setDate(nextDay.getDate() + 1);
         var nextLocalDate1 = nextDay.toLocaleDateString();
@@ -214,8 +181,8 @@ $(document).ready(function () {
         $("#card-day-5").text(nextLocalDate5);
     }
 
-
-    // initialize the weather cards
+    //
+    // begin: initialize the weather cards
 
     init_5_day_forecast_cards();
 
