@@ -1,6 +1,6 @@
 // JavaScript function that wraps everything and runs when DOM is ready
 // Notes:
-// - Special math symbols http://www.javascripter.net/faq/mathsymbols.htm
+// - Special math symbols http://www.javascripter.net/faq/mathsymbols.html
 // - Weather Icons by https://www.flaticon.com/authors/those-icons
 
 $(document).ready(function () {
@@ -8,6 +8,7 @@ $(document).ready(function () {
     // saved api key for openweathermap.org
 
     var apikey = "d57aa70b0f8e0b9c1c6f9e59e8773471";
+    var weather_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + apikey + "&units=imperial";
     var forecast_url = "https://api.openweathermap.org/data/2.5/forecast/?appid=" + apikey + "&units=imperial";
     var weather_uv_url = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apikey
 
@@ -17,8 +18,7 @@ $(document).ready(function () {
     //events
     //
 
-    // when there is a click on search button
-    // get the weather and add the city to the list
+    // search click event, get the weather and add the city to the list
     $(".btn").on("click", function (e) {
 
         var inputstr = $("#input-city").val();
@@ -31,6 +31,7 @@ $(document).ready(function () {
             get_forecast_weather(city);
         });
 
+        //get_current_weather(cityval);
         get_forecast_weather(cityval);
         localStorage.setItem("myWeatherLastCity", cityval);
     })
@@ -48,32 +49,33 @@ $(document).ready(function () {
 
     // functions 
     //
-    function get_forecast_weather(city) {
+
+    function get_current_weather(city) {
+
         var lat;
         var lon;
         var main;
-        var uv_index;
 
-        // this also includes todays weather forecast
+        // todays weather and uv index
         $.ajax({
-            url: forecast_url + "&q=" + city,
+            url: weather_url + "&q=" + city,
             method: "GET",
             success: function (weatherData) {
-                //console.log(weatherData);
-                $(".main-card-title-custom").text(weatherData.city.name + " (" + localDate + ")");
+
+                $(".main-card-title-custom").text(weatherData.name + " (" + localDate + ")");
 
                 // the main is a one word description of the weather
                 // use this word to set the icon
 
-                main = weatherData.list[0].weather[0].main;
+                main = weatherData.weather[0].main;
                 set_weather_icon(main, "#main-icon");
 
-                $("#temp").text("Temperature: " + weatherData.list[0].main.temp + " F\xB0;");
-                $("#humidity").text("Humidity: " + weatherData.list[0].main.humidity + " %");
-                $("#wind").text("Wind Speed: " + weatherData.list[0].wind.speed + " MPH");
+                $("#temp").text("Temperature: " + weatherData.main.temp + " F\xB0;");
+                $("#humidity").text("Humidity: " + weatherData.main.humidity + " %");
+                $("#wind").text("Wind Speed: " + weatherData.wind.speed + " MPH");
 
-                lat = weatherData.city.coord.lat;
-                lon = weatherData.city.coord.lon
+                lat = weatherData.coord.lat;
+                lon = weatherData.coord.lon
 
                 // fetch the uv index with the latitude and longitude info
                 $.ajax({
@@ -96,19 +98,33 @@ $(document).ready(function () {
                     else if (uvVal > 0)
                         $("#uv-index").css("background-color", "green");
                 })
+            },
+            error: function () {
+                alert("ERROR: No such city.  Please try again.");
+            }
+        })
+    }
 
-                //uv_index = get_uv_index(lat, lon);
-                //console.log("back"  + uv_index);
-                //$("#uv-index").text("UV Index: " + uv_index);
+    function get_forecast_weather(city) {
 
-                // Loop through the next 5 days displaying temp and humidity for the 5-day forecast
+        get_current_weather(city);
 
+        // forecast weather starting with tomorrow
+        $.ajax({
+            url: forecast_url + "&q=" + city,
+            method: "GET",
+            success: function (weatherData) {
+
+                // Loop through the next 5 days (3hr incrments) displaying temp and humidity for the 5-day forecast
+                var ii = 0;
                 for (var i = 1; i < 6; i++) {
 
-                    $("#card-temp" + i).text("Temp: " + weatherData.list[i].main.temp + " F\xB0;")
+                    $("#card-temp" + i).text("Temp: " + weatherData.list[ii].main.temp + " F\xB0;")
                     $("#card-humid" + i).text("Humidity: " + weatherData.list[i].main.humidity + " %");
 
-                    set_weather_icon(weatherData.list[i].weather[0].main, "#card-icon" + i)
+                    set_weather_icon(weatherData.list[ii].weather[0].main, "#card-icon" + i)
+
+                    ii = ii + 8;
                 }
             },
             error: function () {
@@ -116,33 +132,33 @@ $(document).ready(function () {
             }
         })
 
-        // not sequential need call back not working
+        // not sequential need call back not working keep to reference
         // see https://stackoverflow.com/questions/15847292/function-that-return-a-value-from-ajax-call-request
-        function get_uv_index(lat, lon) {
-            // fetch the uv index with the latitude and longitude info
-            $.ajax({
-                url: weather_uv_url + "&lat=" + lat + "&lon=" + lon,
-                method: "GET"
-            }).then(function (uvData) {
-                console.log("here!");
-                console.log(uvData.value);
-                return (uvData.value);
+        // function get_uv_index(lat, lon) {
+        //     // fetch the uv index with the latitude and longitude info
+        //     $.ajax({
+        //         url: weather_uv_url + "&lat=" + lat + "&lon=" + lon,
+        //         method: "GET"
+        //     }).then(function (uvData) {
+        //         console.log("here!");
+        //         console.log(uvData.value);
+        //         return (uvData.value);
 
-                //$("#uv-index").text("UV Index: " + uvData.value);
-            })
-        }
+        //         //$("#uv-index").text("UV Index: " + uvData.value);
+        //     })
+        // }
+    }
 
-        function set_weather_icon(weather_type, idset) {
+    function set_weather_icon(weather_type, idset) {
 
-            if (weather_type === "Rain")
-                $(idset).attr("src", "./Assets/storm.png");
-            else if (weather_type === "Clouds")
-                $(idset).attr("src", "./Assets/cloudy.png");
-            else if (weather_type === "Snow")
-                $(idset).attr("src", "./Assets/snowflake.png");
-            else if (weather_type === "Clear")
-                $(idset).attr("src", "./Assets/sun.png");
-        }
+        if (weather_type === "Rain")
+            $(idset).attr("src", "./Assets/storm.png");
+        else if (weather_type === "Clouds")
+            $(idset).attr("src", "./Assets/cloudy.png");
+        else if (weather_type === "Snow")
+            $(idset).attr("src", "./Assets/snowflake.png");
+        else if (weather_type === "Clear")
+            $(idset).attr("src", "./Assets/sun.png");
     }
 
     function init_5_day_forecast_cards() {
@@ -164,8 +180,8 @@ $(document).ready(function () {
             localStorage.setItem("myWeatherLastCity", "");
         }
 
+        // initialize the next 5 days as boot strap cards
         // add a day to today for the next 5 days to display forecast
-        // (probably should of done this as a loop)
         var nextDay = new Date();
         nextDay.setDate(nextDay.getDate() + 1);
         var nextLocalDate1 = nextDay.toLocaleDateString();
@@ -194,7 +210,7 @@ $(document).ready(function () {
     }
 
     //
-    // begin: initialize the weather cards
+    // begin: initialize the weather cards then let user select city
 
     init_5_day_forecast_cards();
 
