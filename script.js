@@ -119,7 +119,7 @@ $(document).ready(function () {
                 var ii = 0;
                 for (var i = 1; i < 6; i++) {
 
-                    $("#card-temp" + i).text("Temp: " + weatherData.list[ii].main.temp + " F\xB0;")
+                    $("#card-temp" + i).text("Temp: " + weatherData.list[ii].main.temp + " F\xB0")
                     $("#card-humid" + i).text("Humidity: " + weatherData.list[i].main.humidity + " %");
 
                     set_weather_icon(weatherData.list[ii].weather[0].main, "#card-icon" + i)
