@@ -15,7 +15,7 @@ The city name is checked to verify it is valid.
 
 ```
 
-![weather dashboard interface](./weather-dashboard/Assets/weather-dashboard-example.PNG)
+![weather dashboard interface](./Assets/weather-dashboard-example.PNG)
 
 ## Technical Features Include
 
