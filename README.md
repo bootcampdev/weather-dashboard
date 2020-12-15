@@ -9,11 +9,13 @@ The weather-dashboard utilize the `localStorage` to retrieve the last city searc
 ## User Story
 
 ```
-As a user this dashboard will show the weather and their forecast for multiple cities and store in a list.  The list is clickable or the user can can type in the city name and click the search button.  The city name is checked to verify it is valid.
+As a user this dashboard will show the weather and their forecast for multiple cities and store in a list.  
+The list is clickable or the user can can type in the city name and click the search button.  
+The city name is checked to verify it is valid.
 
 ```
 
-![weather dashboard interface](./Assets/weather-dashboard-example.png)
+![weather dashboard interface](./weather-dashboard/Assets/weather-dashboard-example.PNG)
 
 ## Technical Features Include
 
