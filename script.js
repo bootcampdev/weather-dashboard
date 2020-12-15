@@ -70,7 +70,7 @@ $(document).ready(function () {
                 main = weatherData.weather[0].main;
                 set_weather_icon(main, "#main-icon");
 
-                $("#temp").text("Temperature: " + weatherData.main.temp + " F\xB0;");
+                $("#temp").text("Temperature: " + weatherData.main.temp + " F\xB0");
                 $("#humidity").text("Humidity: " + weatherData.main.humidity + " %");
                 $("#wind").text("Wind Speed: " + weatherData.wind.speed + " MPH");
 
