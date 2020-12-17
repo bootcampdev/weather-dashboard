@@ -9,8 +9,9 @@ The weather-dashboard utilize the `localStorage` to retrieve the last city searc
 ## User Story
 
 ```
-As a user this dashboard will show the weather and the forecast for a selected  city.  
-Each city searched will be added to a list and can be selected again later.  The list is clickable or the user can can type in the city name and click the search button.  The city name is checked to verify it is valid.
+As a user this dashboard will show the weather and the forecast for a selected city.  Each city searched will be added to a list and can be selected again later.
+The list is clickable or the user can can type in the city name and click the search button.  
+The city name is checked to verify it is a valid entry.
 
 ```
 
@@ -27,7 +28,7 @@ Each city searched will be added to a list and can be selected again later.  The
 - Color coded UV index presentation based on city UV index value
 ```
 
-Application Direct Link Hosted by Github:
+## Application Direct Link Hosted by Github:
 
 [weather-dashboard](https://bootcampdev.github.io/weather-dashboard/)
 
