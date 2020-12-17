@@ -9,8 +9,8 @@ The weather-dashboard utilize the `localStorage` to retrieve the last city searc
 ## User Story
 
 ```
-As a user this dashboard will show the weather and the forecast for a selected  city.  Each city searched will be added to a list and can be selected again later.  
-The list is clickable or the user can can type in the city name and click the search button.  The city name is checked to verify it is valid.
+As a user this dashboard will show the weather and the forecast for a selected  city.  
+Each city searched will be added to a list and can be selected again later.  The list is clickable or the user can can type in the city name and click the search button.  The city name is checked to verify it is valid.
 
 ```
 
@@ -21,13 +21,13 @@ The list is clickable or the user can can type in the city name and click the se
 ```
 - Ajax API calls, checking for success and failure of the call
 - Local storage for the last city search and display this city the next time the application is run
-- Dynamic addition to a clickable list, including adding the event listener to each addition
-- Uitilize icons from Flat Icon and specail math symbols from javascripter.com
-- Include bootstrap cards
-- Color coded UV index presentation based on city index value
+- Dynamic addition to a clickable list, including adding the event listener to each list item
+- Uitilize icons from Flat Icon and special math symbols from javascripter.com
+- Include the use of bootstrap cards
+- Color coded UV index presentation based on city UV index value
 ```
 
-Application direct link hosted by Github:
+Application Direct Link Hosted by Github:
 
 [weather-dashboard](https://bootcampdev.github.io/weather-dashboard/)
 
